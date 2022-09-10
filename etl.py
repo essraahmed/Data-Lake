@@ -55,7 +55,8 @@ def process_song_data(spark, input_data, output_data):
 
     
     # write songs table to parquet files partitioned by year and artist
-    songs_table.write.partitionBy(['year', 'artist_id']).parquet(output_data + "songs/")
+    songs_table.write.partitionBy(['year', 'artist_id']).parquet(output_data + "songs/",mode = "overwrite")
+    #songs_table.write.partitionBy(['year', 'artist_id']).parquet(output_data + "songs/")
     #songs_table.write.parquet(output_data + "songs/", mode="overwrite", partitionBy=["year","artist_id"])
 
     # extract columns to create artists table
