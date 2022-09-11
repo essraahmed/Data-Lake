@@ -57,7 +57,7 @@ Project files<br>
 ## ETL pipeline
 - Extract data from AWS S3, `Song data` and `Log data`.
 - Transform to create dimenstional and fact tables using Apache Spark.
-- Load them back to AWS S3 Data Lake partitioned parquet files. 
+- Load them back to AWS S3 Data Lake partitioned parquet files. <br>
 We used Parquet format because: Low storage consumption and higher execution speed.
 
 ## Confguration
