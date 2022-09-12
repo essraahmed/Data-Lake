@@ -1,3 +1,4 @@
+#Created by esraa ahmed on 10/09/2022
 import configparser
 import pyspark.sql.functions as F
 from datetime import datetime
@@ -70,7 +71,7 @@ def process_song_data(spark, input_data, output_data):
     songs_table = df.select(["song_id", "title", "artist_id", "year","duration"]).where(df.song_id.isNotNull()).dropDuplicates()
 
     
-    # write songs table to parquet files partitioned by year and artist
+    # write songs table to parquet files partitioned by year and artist Created by esraa ahmed on 10/09/2022
     songs_table.write.partitionBy(['year', 'artist_id']).parquet(output_data + "songs/",mode = "overwrite")
 
     # extract columns to create artists table
@@ -116,7 +117,7 @@ def process_log_data(spark, input_data, output_data):
     get_datetime = udf(lambda x: datetime.fromtimestamp(x/1000).strftime('%Y-%m-%d'))
     df = df.withColumn("start_time", get_datetime(df.ts))
     
-    # extract columns to create time table
+    # extract columns to create time table 
     time_table = (df.withColumn("hour", hour("start_time")) \
                     .withColumn("day", dayofmonth("start_time")) \
                     .withColumn("week", weekofyear("start_time")) \
@@ -125,14 +126,14 @@ def process_log_data(spark, input_data, output_data):
                     .withColumn("weekday", F.dayofweek("start_time"))\
                     .select("start_time","hour", "day", "week", "month", "year", "weekday")).drop_duplicates()
    
-    # write time table to parquet files partitioned by year and month
+    # write time table to parquet files partitioned by year and month Created by esraa ahmed on 10/09/2022
     time_table.write.partitionBy(['year', 'month']).parquet(output_data + "time/",mode = "overwrite")
 
     # read in song data to use for songplays table
     song_data = os.path.join(input_data, "song_data/A/A/A/*.json")
     song_df = spark.read.json(song_data)
 
-    # extract columns from joined song and log datasets to create songplays table 
+    # extract columns from joined song and log datasets to create songplays table Created by esraa ahmed on 10/09/2022
     df = df.join(song_df, (df.song == song_df.title) & (df.artist == song_df.artist_name) & (df.length == song_df.duration),'left')
     songplays_table = df.select(monotonically_increasing_id().alias("songplay_id"), 
                                 col("start_time"), 
@@ -169,3 +170,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+#Created by esraa ahmed on 10/09/2022
+    
