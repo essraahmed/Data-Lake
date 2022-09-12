@@ -54,8 +54,7 @@ Project files<br>
 
 1. `dl.cfg`: Contains AWS credentials.
 2. `etl.py`: Reads data from S3, processes that data using Spark, and writes them back to S3.
-3. `etl.ipynb`: Reads data from S3, processes that data using Spark, and writes them back to S3 and show the schema of tables.
-6. `README.md`: Provides discussion on the project.
+3. `README.md`: Provides discussion on the project.
 
 ## ETL pipeline
 - Extract data from AWS S3, `Song data` and `Log data`.
