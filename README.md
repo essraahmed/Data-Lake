@@ -1,3 +1,5 @@
+[![build - passing](https://img.shields.io/badge/build-passing-2ea44f)](https://)
+
 ![aws](https://img.shields.io/badge/Amazon%20AWS-232F3E.svg?style=for-the-badge&logo=Amazon-AWS&logoColor=white)
 ![spark](https://img.shields.io/badge/Apache%20Spark-E25A1C.svg?style=for-the-badge&logo=Apache-Spark&logoColor=white)
 
